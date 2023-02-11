@@ -1,0 +1,37 @@
+# exmaple of config file (/lbml.toml)
+
+# configure the lbml3rd
+[core]
+# whether to show the logo
+show_splash = true
+# the title shown on the menu
+title = "Hello LBML!"
+# entries on the menu
+entries = ["linux_shell", "linux_init", "linux_kexec"]
+# display device to use
+# acceptable values: "all" | "framebuffer" | "console"
+display_device = "all"
+
+# declare an entry
+[linux_init]
+# shown as an option
+title = "Linux Init"
+# type
+# acceptable values: "init" | "shell" | "kexec"
+type = "init"
+exe_path = "/bin/sh"
+params = "-c 'echo shell executed'"
+
+[linux_shell]
+title = "Linux Shell"
+# not finished
+type = "shell"
+cmdline = "mknod /dev/urandom c 1 9 ; dd if=/dev/urandom of=/dev/fb0"
+
+[linux_kexec]
+title = "Linux Kexec"
+# not finished
+type = "kexec"
+exe_path = "/sbin/kexec"
+params = "-l /boot/vmlinuz --initrd /boot/initrd.gz"
+
